@@ -46,6 +46,13 @@ async function run() {
             };
             const result = await itemCollection.updateOne(filter, updateDoc, options);
             res.send(result);
+        });
+
+        // POST
+        app.post('/item', async (req, res) => {
+            const newItems = req.body;
+            const result = await itemCollection.insertOne(newItems);
+            res.send(result);
         })
 
     }
